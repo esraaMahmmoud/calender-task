@@ -1,0 +1,32 @@
+<div class="page">
+    <div>
+        <button (click)="translate.use('en-US')">EN</button>
+        <button (click)="translate.use('ar-EG')">AR</button>
+    </div>
+    <div class="wrapper">
+        <div class="header w-100 mb-3">
+            <div class="full-date">
+                <span class="day">{{12 | localNumber}}</span>
+                <span class='supsub'>
+                    <sup class='superscript'>{{"JAN"| translate}}</sup>
+                    <sub class='subscript'>{{2016 | localNumber}}</sub>
+                </span>
+            </div>
+            <div class="today">{{"today" | translate}}</div>
+        </div>
+        <div class="container w-100 mb-3">
+            <ul class="tasks-list m-0 p-0">
+                <li *ngFor="let item of plans" class="task">
+                    <p class="m-0" [ngClass]="{'disabled':item.isDone}">{{item.planName}}</p>
+                    <span>
+                        <i *ngIf="!item.isDone" class="far fa-circle fa-lg fa-icon"></i>
+                        <i *ngIf="item.isDone" class="fa fa-compass fa-lg compass-icon">
+                        </i>
+                    </span>
+                </li>
+
+            </ul>
+        </div>
+        <button class="btn-add"><i class="fa fa-plus fa-lg fa-icon"></i></button>
+    </div>
+</div>
