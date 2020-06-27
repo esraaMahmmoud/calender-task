@@ -1,3 +1,10 @@
+@mixin width-padd($min-width,$padding) {
+    .wrapper{
+        min-width: $min-width;
+        padding: $padding;
+
+    }
+}
 
 .page {
     background-color: rgb(247, 242, 242);
@@ -12,10 +19,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // max-width: 650px;
-    min-width: 450px;
+    //min-width: 450px;
     background-color:white;
-    padding:60px;
+    //padding:60px;
 
     .header {
         display: flex;
@@ -27,7 +33,7 @@
         .tasks-list{
             list-style: none;
             .task{
-                padding: 20px 0;
+                padding: 1.2em 0;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
@@ -82,3 +88,42 @@
 .compass-icon{
     color:#63f292;
 }
+
+@media (max-width: 480px) { /* smartphones, iPhone, portrait 480x320 phones */ 
+
+    @include width-padd(220px,20px);
+    .page{
+        align-items: stretch;
+    }
+
+}
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+    @include width-padd(300px,30px);
+
+}
+@media (min-width:641px) and (max-width: 960px) { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+
+    @include width-padd(300px,30px);
+    .wrapper{
+        .btn-add{
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+}
+@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+
+    @include width-padd(600px,40px);
+
+}
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ 
+
+    @include width-padd(800px,40px);
+
+}
+@media (min-width:1281px) { /* hi-res laptops and desktops */
+    @include width-padd(800px,40px);
+ }
+
+

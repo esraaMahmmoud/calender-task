@@ -14,5 +14,11 @@ export class AppComponent implements OnInit{
   ){}
   ngOnInit(): void {
     this.translate.use('en-US');
+    this.translate.onLangChange.subscribe(
+      change => {
+        console.log(change)
+        document.querySelector('body').setAttribute('dir', change.lang == 'ar-EG' ? 'rtl' : 'ltr');
+      }
+    )
   }
 }
