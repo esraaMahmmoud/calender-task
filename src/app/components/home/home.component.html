@@ -16,7 +16,7 @@
         </div>
         <div class="container w-100 mb-3">
             <ul class="tasks-list m-0 p-0">
-                <li *ngFor="let item of plans" class="task" (click)="item.isDone = !item.isDone">
+                <li *ngFor="let item of plans" class="task" (click)="togglePlan(item)">
                     <p class="m-0" [ngClass]="{'disabled':item.isDone}">{{item.planName}}</p>
                     <span>
                         <i *ngIf="!item.isDone" class="far fa-circle fa-lg fa-icon"></i>

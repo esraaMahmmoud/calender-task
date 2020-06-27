@@ -38,10 +38,13 @@ export class HomeComponent implements OnInit {
 
   }
   addNew() {
-    const note = window.prompt(this.inputMsg);
-    if (note && note.trim()) {
-      this.plans.push({ planName: note, isDone: false });
+    const plan = window.prompt(this.inputMsg);
+    if (plan && plan.trim()) {
+      this.plans.push({ planName: plan, isDone: false });
     }
+  }
+  togglePlan(item){
+    item.isDone = !item.isDone
   }
 
 
