@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HomeComponent implements OnInit {
 
-  plans: { planName: string, isDone: boolean }[]
+  public plans: { planName: string, isDone: boolean }[];
+  private inputMsg: string;
 
   constructor(
     public translate: TranslateService
@@ -23,9 +26,22 @@ export class HomeComponent implements OnInit {
       { planName: "Watch 'sherlock'", isDone: false },
       { planName: "Begin QA for the product", isDone: false },
       { planName: "Go for a walk", isDone: false },
+    ];
+    this.translate.onLangChange.pipe(
+      switchMap(() => this.translate.get("inputMsg"))
+    ).subscribe(
+      inputMsg => {
+        console.log("inputMsg", inputMsg)
+        this.inputMsg = inputMsg;
+      }
+    )
 
-    ]
-
+  }
+  addNew() {
+    const note = window.prompt(this.inputMsg);
+    if (note && note.trim()) {
+      this.plans.push({ planName: note, isDone: false });
+    }
   }
 
 

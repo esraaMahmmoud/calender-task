@@ -1,7 +1,7 @@
 <div class="page">
-    <div>
+    <div class="changeLanguage">
         <button (click)="translate.use('en-US')">EN</button>
-        <button (click)="translate.use('ar-EG')">AR</button>
+        <button (click)="translate.use('ar-EG')">عربى</button>
     </div>
     <div class="wrapper">
         <div class="header w-100 mb-3">
@@ -16,7 +16,7 @@
         </div>
         <div class="container w-100 mb-3">
             <ul class="tasks-list m-0 p-0">
-                <li *ngFor="let item of plans" class="task">
+                <li *ngFor="let item of plans" class="task" (click)="item.isDone = !item.isDone">
                     <p class="m-0" [ngClass]="{'disabled':item.isDone}">{{item.planName}}</p>
                     <span>
                         <i *ngIf="!item.isDone" class="far fa-circle fa-lg fa-icon"></i>
@@ -27,6 +27,6 @@
 
             </ul>
         </div>
-        <button class="btn-add"><i class="fa fa-plus fa-lg fa-icon"></i></button>
+        <button class="btn-add" (click)="addNew()"><i class="fa fa-plus fa-lg fa-icon"></i></button>
     </div>
 </div>

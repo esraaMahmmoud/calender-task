@@ -2,5 +2,6 @@
     "HOME":"home page",
     "Login":"login",
     "today":"Tuesday",
-    "JAN":"JAN"
+    "JAN":"JAN",
+    "inputMsg":"enter new note"
 }

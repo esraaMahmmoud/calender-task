@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-root',
@@ -7,17 +9,17 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'calender-task';
-  constructor(
-    public translate: TranslateService
 
+  constructor(
+    public translate: TranslateService,
+    @Inject(DOCUMENT) private document: Document,
   ){}
+
   ngOnInit(): void {
     this.translate.use('en-US');
     this.translate.onLangChange.subscribe(
       change => {
-        console.log(change)
-        document.querySelector('body').setAttribute('dir', change.lang == 'ar-EG' ? 'rtl' : 'ltr');
+        this.document.querySelector('body').setAttribute('dir', change.lang == 'ar-EG' ? 'rtl' : 'ltr');
       }
     )
   }
